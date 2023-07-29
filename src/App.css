@@ -32,10 +32,19 @@
   cursor: pointer;
   align-items: center;
   justify-content: center;
+  transition-property: border-radius, background-color, color;
+  transition-duration: 0.4s;
+  transition-timing-function: ease;
+}
+
+.mainBarButton:hover {
+  background-color: #33ba63;
+  color: white;
+  border-radius: 30%;
 }
 
 .mainButton {
-  background-color: #5d6af2;
+  background-color: #5d6af2 !important;
   border-radius: 33%;
 }
 
