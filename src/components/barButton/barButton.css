@@ -55,3 +55,17 @@
   height: 36px !important;
   width: 8px;
 }
+
+.mainButton {
+  background-color: #5d6af2 !important;
+  border-radius: 33%;
+}
+
+.greenFontButton {
+  color: #249f57;
+}
+
+.greenFontButton:hover {
+  color: white;
+  background-color: #33ba63;
+}
