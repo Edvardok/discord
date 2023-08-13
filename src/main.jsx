@@ -1,7 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import { Link, RouterProvider, createBrowserRouter } from "react-router-dom";
+import {
+  Link,
+  Navigate,
+  RouterProvider,
+  createBrowserRouter,
+} from "react-router-dom";
 import App from "./App";
 import {
   channelsRoute,
@@ -10,6 +15,11 @@ import {
   loginRoute,
 } from "./constants/routs";
 const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Navigate to={homeRoute}></Navigate>,
+  },
+
   {
     path: homeRoute,
     element: <App />,

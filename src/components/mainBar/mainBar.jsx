@@ -4,10 +4,12 @@ import ExploreIcon from "@mui/icons-material/Explore";
 import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
 import { BarButton } from "../barButton/barButton";
 import "./mainBar.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { createChannelLink, homeRoute } from "../../constants/routs";
 
 export function MainBar(props) {
+  const location = useLocation();
+
   return (
     <div className="mainBar">
       <Link to={homeRoute}>
@@ -16,10 +18,15 @@ export function MainBar(props) {
         </div>
       </Link>
       <Link to={createChannelLink(1)}>
-        <BarButton selected={true}></BarButton>
+        <BarButton
+          selected={createChannelLink(1) == location.pathname}
+        ></BarButton>
       </Link>
       <Link to={createChannelLink(2)}>
-        <BarButton notifications={true}></BarButton>
+        <BarButton
+          notifications={true}
+          selected={createChannelLink(2) == location.pathname}
+        ></BarButton>
       </Link>
       <div className="mainBarButton greenFontButton">
         <AddIcon></AddIcon>
