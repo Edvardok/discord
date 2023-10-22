@@ -7,36 +7,44 @@ import "./mainBar.css";
 import { Link, useLocation } from "react-router-dom";
 import { createChannelLink, homeRoute } from "../../constants/routs";
 
-export function MainBar(props) {
+export function MainBar() {
   const location = useLocation();
-
+  let mainSelect = homeRoute == location.pathname;
   return (
     <div className="mainBar">
       <Link to={homeRoute}>
-        <div className="mainBarButton mainButton">
-          <img className="mainBarIcon" src={discord_icon} alt="Discord Icon" />
-        </div>
+        <BarButton
+          isSelected={mainSelect}
+          icon={
+            <img
+              className="mainBarIcon"
+              src={discord_icon}
+              alt="Discord Icon"
+            />
+          }
+          className={mainSelect ? "mainButton" : ""}
+        />
       </Link>
       <Link to={createChannelLink(1)}>
         <BarButton
-          selected={createChannelLink(1) == location.pathname}
-        ></BarButton>
+          text="G"
+          isSelected={createChannelLink(1) == location.pathname}
+          //icon={<AddIcon></AddIcon>}
+        />
       </Link>
       <Link to={createChannelLink(2)}>
         <BarButton
-          notifications={true}
-          selected={createChannelLink(2) == location.pathname}
-        ></BarButton>
+          hasNotifications={true}
+          text="H"
+          isSelected={createChannelLink(2) == location.pathname}
+        />
       </Link>
-      <div className="mainBarButton greenFontButton">
-        <AddIcon></AddIcon>
-      </div>
-      <div className="mainBarButton  greenFontButton">
-        <ExploreIcon></ExploreIcon>
-      </div>
-      <div className="mainBarButton greenFontButton">
-        <FileDownloadOutlinedIcon></FileDownloadOutlinedIcon>
-      </div>
+      <BarButton icon={<AddIcon></AddIcon>} isGreen />
+      <BarButton icon={<ExploreIcon></ExploreIcon>} isGreen />
+      <BarButton
+        icon={<FileDownloadOutlinedIcon></FileDownloadOutlinedIcon>}
+        isGreen
+      />
     </div>
   );
 }
